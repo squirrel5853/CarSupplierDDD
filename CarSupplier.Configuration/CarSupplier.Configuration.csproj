@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarSupplier.Application\CarSupplier.Application.csproj" />
+    <ProjectReference Include="..\CarSupplier.DA.EFCore\CarSupplier.DA.EFCore.csproj" />
+    <ProjectReference Include="..\CarSupplier.DA\CarSupplier.DA.csproj" />
+    <ProjectReference Include="..\CarSupplier.Hosting\CarSupplier.Hosting.csproj" />
+    <ProjectReference Include="..\CarSupplier.Services\CarSupplier.Services.csproj" />
+  </ItemGroup>
+
+</Project>
