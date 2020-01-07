@@ -33,7 +33,7 @@ namespace CarSupplier.Configuration
             //Services
             services.AddScoped<ICarService<FordCar>, FordCarService>();
 
-            services.AddSingleton<IApplicationRunner, ApplicationRunner>();
+            services.AddScoped<IApplicationRunner, ApplicationRunner>();
         }
     }
 }

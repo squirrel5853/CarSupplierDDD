@@ -15,7 +15,7 @@ namespace CarSupplier.Hosting
         public IServiceProvider ServiceProvider { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public virtual void ConfigureServices(IServiceCollection services)
         {
             ConfigureSpecificServices(services);
 
@@ -23,6 +23,22 @@ namespace CarSupplier.Hosting
         }
 
         public abstract void ConfigureSpecificServices(IServiceCollection services);
-        public abstract void Configure(IServiceProvider serviceProvider);
+    }
+
+    public abstract class BaseStatupWithConfigure : BaseStartup
+    {
+        public BaseStatupWithConfigure(IConfiguration configuration) : base(configuration)
+        {
+
+        }
+
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            base.ConfigureServices(services);
+
+            Configure();
+        }
+
+        public abstract void Configure();
     }
 }

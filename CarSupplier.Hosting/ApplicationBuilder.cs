@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Concurrent;
 using System.IO;
@@ -12,13 +11,11 @@ using System.Threading.Tasks;
 
 namespace CarSupplier.Hosting
 {
-    public class ApplicationBuilder<R> : IHost where R : IApplicationRunner
+    public class ApplicationBuilder<R> where R : IApplicationRunner
     {
         private ConcurrentBag<Task> tasks = new ConcurrentBag<Task>();
 
         private BaseStartup startup;
-
-        public IServiceProvider Services => startup.ServiceProvider;
 
         private ApplicationBuilder(BaseStartup startup)
         {
@@ -79,7 +76,6 @@ namespace CarSupplier.Hosting
         {
             var serviceCollection = new ServiceCollection();
             this.startup.ConfigureServices(serviceCollection);
-            this.startup.Configure(startup.ServiceProvider);
             return this;
         }
 

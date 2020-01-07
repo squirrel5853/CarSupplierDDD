@@ -11,7 +11,7 @@ using System;
 
 namespace CarSupplier.ConsoleClient
 {
-    public class Startup : BaseStartup
+    public class Startup : BaseStatupWithConfigure
     {
         public Startup(IConfiguration configuration) : base(configuration)
         {
@@ -29,9 +29,9 @@ namespace CarSupplier.ConsoleClient
             services.AddScoped<ICarManufacturerMessageConsumer<FordCarSpecificationMessage>, FordCarManufacturerConsumer>();
         }
 
-        public override void Configure(IServiceProvider serviceProvider)
+        public override void Configure()
         {
-            serviceProvider.CreateDbIfNotExist();
+            this.ServiceProvider.CreateDbIfNotExist();
         }
     }
 }
